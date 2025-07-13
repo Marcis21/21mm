@@ -1,0 +1,854 @@
+/* Basic Reset */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: repeat(12, 1fr); /* 12 vienāda platuma kolonnas */
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #1c1c1c;
+    color: whitesmoke;
+    min-height: 100vh;  
+    margin: 0rem 2rem;
+}
+
+main {
+    grid-column: span 12;
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+a:hover, li a:hover, .image-container .aicinajums a:hover {
+    text-decoration: none;
+    color: aqua;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+/* Main Content Styles */
+
+h1 {
+    align-self: end; /* Novieto tuvāk tekstam */
+    margin-top: 20px; /* Mazākas atstarpes starp h1 un p */
+    padding: 1rem;
+    width: 300px;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin: 0rem;
+    padding: 1rem;
+    width: 300px;
+    letter-spacing: 0.1px;
+    text-transform: lowercase;
+    align-self: center;
+    text-align: center;
+}
+
+p{
+    text-transform:none; /* This applies to all paragraphs */
+    line-height: 2rem;
+    margin-top: 0;
+}
+
+h1,h2 {
+    font-size: 1.5rem;
+    font-family: inherit;
+    font-weight: 100;
+}
+
+input, textarea {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+}
+/* Header Styles */
+
+header  {
+    grid-column: 1 / span 12; /* Header aizņem visas 12 kolonnas */
+    margin: 0rem 0rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    overflow-wrap:inherit;
+}
+
+.social-media {
+    display: flex;
+    gap: 0px;
+}
+
+.social-media a {
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
+    padding: 20px;
+    text-align: right;
+}
+
+
+/* Navigation Styles */
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0 0px;
+}
+
+nav ul li a {
+    padding: 21px;
+    display: block;
+}
+
+
+/* Submenu Styles */
+nav ul ul {
+    display: none; /* Hide submenu by default */
+    position: absolute;
+    top: 100%; /* Position below the parent menu item */
+    right: 0;
+    z-index: 2; /* Ensure it appears above other elements */
+    text-align: right;
+}
+
+nav ul li:hover > ul {
+    display: block;
+}
+
+nav ul ul li {
+    margin: 0; /* No margin for submenu items */
+    width: 200px;
+}
+nav ul ul li a {
+    padding: 8px 20px;
+    display: block;
+}
+
+
+.image-container {
+    height: 1080px; /* tāds pats kā bijis attēlam */
+    background-color: #1c1c1c; /* tikai ja vēlies pelēku fonu */
+    position: relative; /* Lai absolūti pozicionētie elementi varētu izmantot šo konteineru */
+    display: flex;
+    flex-direction: column; /* Novieto elementus vertikāli */
+    justify-content: center; /* Centrē saturu vertikāli */
+    align-items: center; /* Centrē horizontāli */
+    min-height: calc(100vh - 250px); /* faktiski aizpilda redzamo ekrānu */
+    width: 100%;
+    overflow-x: hidden; /* Bloķē horizontālo ritināšanu */
+}
+
+.image-container img.Background {
+    object-fit: contain; /* Saglabā attēla proporcijas */
+    display: block; /* Novērš nevēlamas atstarpi zem attēla */
+    color: #1c1c1c;
+}
+
+.zimols {
+    display: grid;
+    position: absolute; /* Absolūta pozicionēšana attiecībā pret .image-container */
+    top: 50%; /* Centrē vertikāli */
+    left: 50%; /* Centrē horizontāli */
+    transform: translate(-50%, -50%); /* Nodrošina, ka tas ir pilnīgi centrēts */
+    width: 300px; /* Logotipa izmērs */
+    z-index: 4; /* Pārliecinies, ka logotips ir virs fona attēla */
+}
+
+/*Par Studija 21mm*/
+
+.par-studija-21mm {
+    display: flex;
+    flex-wrap: wrap; /* Atļauj bērniem pārkāpt uz nākamo rindu */
+    justify-content: center; /* Nodrošina atstarpi starp kolonnām */
+    align-items: center;
+    min-height: calc(100vh - 250px); /* faktiski aizpilda redzamo ekrānu */
+    gap:20px;
+}
+
+.top-side, .bottom-side {
+    display: flex;
+    justify-content:center; /* Atstarpes starp elementiem */
+    gap:20px;
+    width: 100%;
+}
+
+/* Iestatījumi teksta un attēlu elementiem */
+.teksts1, .image2-container, .logo-kapseta {
+    flex: 1 1 50%; /* Divas kolonnas, katrai tiek piešķirts līdz 48% platuma */
+    max-width: 500px; /* Izlīdzina katras kolonnas platumu */
+    height: 500px; /* Noteikts augstums */
+    text-indent: 2rem;
+   
+}
+
+.teksts1 {
+    padding: 1rem;
+    line-height: 2rem;
+    text-align: justify; /* Justē tekstu */
+}
+
+/* Attēlu un logotipu konteineri */
+.image2-container, .logo-kapseta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Logotipi tiek izvietoti režģī */
+.logo-kapseta {
+    display: grid; /* Izmanto grid izkārtojumu */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    justify-content: center; /* Centrē saturu */
+    width: 100%; /* Nodrošina, ka logo-kapseta neaizņem vairāk par 100% platumu */
+    box-sizing: border-box; /* Iekļauj padding un robežas kopējā izmērā */
+}
+
+.logo {
+    width: 100%; /* Katrs logotips aizņem pilnu kolonnas platumu */
+    max-width: 100px; /* Katrs logotips būs līdz 100px plats */
+    aspect-ratio: 1 / 1; /* Saglabā kvadrātveida formu */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto; /* Centram logotipu */
+    border-radius: 8px;
+    padding:10px;
+}
+
+/* Attēlu konteineris ar pārrobežu efektu */
+.image2-container {
+    position: relative;
+    border: 1px solid whitesmoke;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    filter: saturate(0); /* Melnbalts sākumā */
+}
+
+.image2-container:hover {
+    border-color: aqua;
+    box-shadow: 0 0 16px 1px rgba(0, 255, 255, 0.3);
+    filter: saturate(1); /* Krāsainais efekts peldošajiem attēliem */
+}
+
+/* Attēlu palielināšanās efekts */
+.image2 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease;
+}
+
+.image2:hover {
+    transform: scale(1.05); /* Attēls palielinās par 5% */
+}
+
+.dala2 h1 {
+    display:none;
+}
+
+
+/*Container - video-pakalpojumi*/
+.video-container {
+    display: flex; /* Izmanto flexbox izkārtojumu */
+    flex-direction: row;
+    width: 100%; /* Maksimālais konteineru platums */
+    min-height: calc(100vh - 250px); /* faktiski aizpilda redzamo ekrānu */
+    align-items: center;
+    flex-wrap: wrap; /* Atļauj elementiem pārklāties */
+    align-content:space-around;
+    justify-content: center; /* Centrē saturu horizontāli */
+    gap: 20px;
+}
+
+.video-container .block {
+    display: flex;
+    max-width: 500px; /* Maksimālais platums */
+    height: 500px; /* Maksimālais augstums */
+    background-color: rgb(0, 0, 0); /* Bloka fona krāsa */
+    color: whitesmoke; /* Teksta krāsa */
+    margin: 0;
+    width: 100%;
+    justify-content: center;
+    position: relative; /* Lai varētu pozicionēt .cover-frame */
+    overflow: hidden; /* Lai attēli nepārsniegtu konteineru */
+    gap: 20px;
+}
+
+.video-container .block:hover{
+    border-color: aqua; /* Maina border krāsu uz hover */
+    box-shadow: 0 0 16px 1px rgba(0, 255, 255, 0.3);
+}
+
+.cover-frame {
+    position: relative;
+    width: 500px; /* Fiksēts platums */
+    height: 500px; /* Fiksēts augstums */
+    overflow: hidden; /* Saglabā attēlu border ietvaros */
+    border: 1px solid whitesmoke; /* Border līnija sākotnēji baltā krāsā */
+    transition: border-color 0.3s ease; /* Gluda pāreja uz border krāsas maiņu */
+    display: flex; /* Izmanto flexbox, lai centrētu saturu */
+    flex-direction: column; /* Novieto saturu vertikāli */
+    justify-content: center; /* Centrē saturu vertikāli */
+    align-items: center; /* Centrē saturu horizontāli */
+    text-align: center; /* Centrē tekstu */
+    cursor: pointer;
+}
+
+
+.cover-frame a {
+    display: flex; /* Izmanto flexbox, lai saturu centrētu */
+    flex-direction: column; /* Novieto saturu vertikāli */
+    justify-content: center; /* Centrē saturu vertikāli */
+    align-items: center; /* Centrē saturu horizontāli */
+    text-align: center; /* Centrē tekstu */
+    color: inherit; /* Iedod krāsu no vecākiem elementiem */
+    text-decoration: none; /* Noņem pasvītrojumu no saites */
+}
+
+.cover-frame h2 {
+    margin: 10px 0; /* Attālums starp nosaukumu un attēlu */
+    color: whitesmoke; /* Iestatiet krāsu, ja nepieciešams */
+    position: absolute; /* Pozicionē nosaukumu virs attēla */
+    top: 40%; /* Attālums no augšas */
+    left: 50%; /* Horizontālā centrēšana */
+    transform: translateX(-50%); /* Pārvietojiet uz kreiso pusi par pusi no platuma, lai centrētu */
+    z-index: 1; /* Pārliecinieties, ka nosaukums ir virs attēla */
+    transition: color 0.5s ease; /* Pievienots efekts krāsas maiņai */
+    transition: font-size 0.3s ease; /* Pievienots pārejas efekts uz font-size */
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.cover-frame img {
+    width: auto; /* Aizpildīt visu pieejamo platumu */
+    height: 500px; /* Aizpildīt visu pieejamo augstumu */
+    object-fit: cover; /* Aizpildīt laukumu, saglabājot proporcijas */
+    opacity: 50%;
+    filter: saturate(0); /* Sākotnēji melnbalts */
+    transition: filter 1s ease, transform 1s ease; /* Gluda pāreja uz hover efektu */
+}
+
+.cover-frame:hover{
+    border-color: aqua;
+    cursor: pointer; 
+}
+
+/* Teksta un saites krāsas maiņa uz hover */
+.cover-frame:hover h2,
+.cover-frame:hover h2 a {
+    
+    color: aqua; /* Maina tekstu un saites krāsu uz hover */
+    text-decoration: none; /* Noņem pasvītrojumu no saites */
+    transition: font-size 1s ease; /* Pievienots pārejas efekts uz font-size */
+    opacity: 1;
+}
+
+/* Efekts uz attēlu */
+.cover-frame:hover img {
+    filter: saturate(1); /* Krāsainais efekts uz hover */
+    transform: scale(1.05); /* Neliels pietuvinājums */    
+}
+
+.play-button {
+    display: none;
+}
+
+/*reklama*/
+
+.video-reklama {
+    display: grid;
+    width: 100%;
+    min-height: 100%;
+    grid-template-columns: repeat(4, 1fr); /* Divas kolonnas */
+    gap: 20px; /* Atstarpe starp video klipiem */
+}
+
+.video-item {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: stretch;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid whitesmoke;
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0.2);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.video-item:hover {
+    border-color: aqua;
+    box-shadow: 0 0 16px 1px rgba(0, 255, 255, 0.3);
+}
+
+.cover-photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Tumša pārklājuma efekts */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 3;
+    border: 1px solid whitesmoke;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cover-photo:hover {
+    border-color: aqua;
+    box-shadow: 0 0 16px 1px rgba(0, 255, 255, 0.3);
+}
+
+.cover-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 1s ease, transform 1s ease;
+}
+
+.cover-photo:hover img {
+    filter: grayscale(0);
+    transform: scale(1.05);
+}
+
+/* Hover efekts uz video un cover-photo */
+.video-item:hover .cover-photo img {
+    filter: grayscale(0); /* Krāsains attēls, kad hover virs video */
+    transform: scale(1.05); /* Attēls palielinās */
+}
+
+.cover-photo .play-button {
+    position: absolute;
+    color: white;
+    font-size: 2rem;
+    transition: color 0.3s ease;
+}
+
+.cover-photo:hover .play-button {
+    color: aqua;
+}
+
+/* Pāreja uz bildes paslēpšanu */
+.cover-photo.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+video {
+    width: 100%;
+    display: block;
+    position: absolute;
+    z-index: 2;
+}
+
+/*kontakti*/
+
+
+.contact-container {
+    display: flex; /* Izmanto flexbox izkārtojumu */
+    flex-direction: row;
+    flex-wrap: wrap; /* Atļauj elementiem pārklāties */
+    width: 100%; /* Maksimālais konteineru platums */
+    min-height: calc(100vh - 250px); /* faktiski aizpilda redzamo ekrānu */
+    align-items: center;
+    box-sizing: border-box;
+    align-content:space-evenly;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.left-section, .right-section {
+    display: flex;
+    width: 100%;
+    position: relative; /* Lai varētu pozicionēt .cover-frame */
+  
+}
+
+.left-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrē elementus horizontāli */
+    max-width: 500px;
+    width: 100%;
+    align-self: center;
+}
+
+
+.bilde {
+    display: flex;
+    position: relative; /* Lai bilde varētu transformēties iekš konteinera */
+    cursor: pointer;
+    z-index: 2;
+    overflow: hidden;
+    border: 1px solid whitesmoke; /* Sākotnējā border krāsa */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bilde:hover {
+    border-color: aqua; /* Maina border krāsu uz hover */
+    box-shadow: 0 0 16px 1px rgba(0, 255, 255, 0.3);
+}
+
+.bilde img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease; /* Pārliecināmies, ka efekts strādā */
+    filter: saturate(0);
+}
+
+.bilde:hover img {
+    transform: scale(1.05); /* Pietuvina attēlu */
+    filter: saturate(1);
+}
+
+.left-section .bilde, .left-section .teksts3 {
+    width: 100%; /* Bilde un teksts būs vienāda platuma */
+    max-height: 500px; /* Maksimālais platums */
+}
+
+
+.teksts3 {
+    line-height: 1.5rem;
+    text-align: start;
+    max-width: 500px;
+    padding: 1rem;
+}
+
+.right-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrē elementus horizontāli */
+    max-width: 500px;
+    width: 100%;
+    align-self: center;
+    padding: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Attālums starp ievadlaukiem */
+    width: 100%; /* Aizņem visu pieejamo platumu */
+    max-width: 100%;
+
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;
+
+}
+
+label {
+    color: whitesmoke;
+    display: block;
+    font-style: normal;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 14px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid #555;
+    color: whitesmoke;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+input:hover, textarea:hover {
+    border-color: aqua; 
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 0 16px 1px rgba(0, 255, 255, 0.3);
+}
+
+input:focus, textarea:focus {
+    border-color: aqua;  /* Aqua border when focused */
+    outline: none;       /* Remove the default blue outline */
+}
+
+textarea {
+    resize: vertical;
+    font-size: 14px;
+}
+
+.full-width {
+    flex-direction: column;
+}
+
+button {
+    align-self: flex-end; /* Align the button to the left */
+    padding: 10px 40px;
+    background-color: transparent;
+    border: 1px solid #555;
+    color: whitesmoke;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+button:hover {
+    border-color: aqua; 
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 0 16px 1px rgba(0, 255, 255, 0.3);
+}
+
+/* Footer Styles */
+hr {
+    margin: 20px 0;
+}
+
+footer {
+    grid-column: span 12; /* Footer arī aizņem visas 12 kolonnas */
+    justify-items: center;
+    bottom: 0;
+    background-color: #1c1c1c;
+    padding: 20px 10px;
+    z-index: 2;
+    text-align: center; /* Centrē tekstu */
+    font-size: 14px;
+}
+
+footer .normal {
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 1280px) {
+
+    .teksts1, .teksts2, .image2-container, .logo-kapseta {
+        flex: 1 1 100%; /* Aizņem visu pieejamo vietu (100%) */
+        max-width: 100%; /* Maksimālais platums 100% */
+    }
+
+    .logo-kapseta {
+        display: flex; /* Sākotnēji Grid izkārtojums */
+    }
+
+    .top-side, .bottom-side {
+        width: 100%;
+        flex-direction: column; /* Izvieto blokus vertikāli */
+        align-items: center; /* Centrē blokus vertikāli */
+    }
+
+ .video-reklama {
+    grid-template-columns: repeat(2, 1fr); /* Divas kolonnas */
+ }
+
+}
+
+
+/* Responsive Styles */
+@media (max-width: 820px) {
+
+    * {
+        box-sizing: border-box; /* Nodrošina, ka padding un border ir daļa no platuma */
+    }
+
+    main {
+        grid-column: 1 / span 12; /* Full width on mobile */
+        margin: 0 auto; /* Centrē visu saturu */
+        box-sizing: border-box;
+    }
+
+    body {
+        padding: 10px; /* Less padding on mobile */
+    }
+
+    .input-group {
+        width: 100%; /* Nodrošina, ka visi ievadlauki ir 100% platumā */
+    }
+
+    .col-8 {
+        width: 100%;
+        grid-column: 1 / span 12;
+    }
+
+    header {
+        margin: 0;
+        display: flex;
+        flex-direction:column; 
+        align-items: center;
+        justify-content: center;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: row; /* Stack menu vertically */
+        align-items: center;
+        flex-wrap: wrap;
+        
+    }
+
+    .zimols {
+        position: absolute;
+        left: 50%; /* Center it horizontally */
+        transform: translate(-50%, -50%); /* Ensure it is perfectly centered */
+        width: 30vw; /* Adjust intro text size */
+    }
+
+    nav ul {
+        flex-direction: row; /* Stack menu items vertically */
+        align-items: center;
+        list-style: none; /* Remove bullet points */
+        padding: 0;
+    }
+
+    nav ul ul {
+    display: none;
+    }
+    
+    nav ul li:hover > ul {
+    color: aqua;
+    display: none;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .social-media {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center social icons */
+    margin-bottom: 10px; /* Add spacing between social icons and menu bar */
+    }
+
+    .social-media a {
+    margin: 0 0px; /* Space out the icons horizontally */
+    }
+
+
+    .video-reklama{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .video-item{
+        flex: 1 1 auto;  
+    }
+
+    .contact-container {
+        align-content:baseline;
+        justify-content: center;  
+    }
+      
+        
+}
+    
+
+@media (max-width: 480px) {
+
+    header {
+        margin: 0;
+    }   
+
+    main {
+    margin:0px;
+    }
+
+    h1 {
+        margin: 0px;
+    }
+
+header nav {
+        flex-direction: column; /* Stack header elements vertically */
+        align-items: center; /* Align elements to the left */
+        flex-wrap: wrap;
+        
+    }
+    
+    nav ul {
+        flex-direction: column; /* Stack menu items vertically */
+        align-items: center;
+        list-style: none; /* Remove bullet points */
+        padding: 0;
+    }
+
+nav ul ul {
+        display: none; /* Consider implementing a mobile menu instead */
+    }
+
+    .video-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .video-container .block {
+        flex: 1 1 auto;  
+    }
+
+    
+    .zimols {
+        width: 30vw; /* Make the logo smaller on mobile screens */
+    }
+
+    .centered-text {
+        font-size: 6vw; /* Adjust text size on mobile screens */
+    }
+
+    .intro {
+        font-size: 4vw; /* Adjust intro text size */
+    }
+    
+    .teksts, h1 {
+        width: auto;
+    }
+
+    
+    .teksts1, .teksts2, .image2-container, .logo-kapseta {
+        flex: 1 1 100%; /* Aizņem visu pieejamo vietu */
+        min-width: auto; /* Atsakās no min-width ierobežojuma */
+        max-width: 100%; /* Maksimālais platums arī 100% */
+        height: auto; /* Pielāgo augstumu */
+    }
+
+    .top-side, .bottom-side {
+        flex-direction: column; /* Izvieto vertikāli */
+        align-items: center; /* Centrē saturu */
+    }
+}

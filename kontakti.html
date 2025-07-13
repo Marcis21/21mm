@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Mārcis Liepiņš">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakti</title>
+    <link rel="icon" href="Logo_21mm.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+
+    <header>
+        <div class="social-media">
+            <a href="index.html"><i class="fas fa-home"></i></a>
+            <a href="https://www.facebook.com/21milimetrs" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://vimeo.com/user11404151" target="_blank" rel="noopener noreferrer"><i class="fab fa-vimeo-v"></i></a>
+            <a href="https://www.youtube.com/@Studija21MM" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+        </div>
+        
+        <nav>
+            <ul class="navigacija">
+                <li><a href="par-Studija-21mm.html">par 21mm</a></li>
+                <li>
+                    <a href="video-pakalpojumi.html">pakalpojumi</a>
+                    <ul>
+                        <li><a href="video-reklama.html">video reklāma</a></li>
+                        <li><a href="video-grafika.html">video grafika</a></li>
+                        <li><a href="video-klipi.html">video klipi</a></li>
+                    </ul>
+                </li>
+                <li><a href="kontakti.html">kontakti</a></li>
+            </ul>
+        </nav>
+    </header>
+   
+    <main>
+        <div class="col-8">
+            <h1 class="dala1">kontakti</h1>
+            <div class="contact-container">
+                <!-- Left Section: Contact Info -->
+                <div class="left-section"> 
+                    <figure class="bilde">               
+                        <img src="Bildes/Logo/bilde_ML.jpg" alt="Profile Photo of Mārcis Liepiņš">
+                    </figure>
+                    <div class="teksts3">
+                        <p>Mārcis Liepiņš</p>
+                        <p>Adrese: Zeltrītu iela 26, Mārupe</p>
+                        <p>E-pasts: <a href="mailto:21milimetrs@gmail.com">21milimetrs@gmail.com</a></p>
+                        <p>Mob: +371 29 358 338</p>
+                    </div>
+                </div>
+        
+                <!-- Right Section: Contact Form -->
+                <div class="right-section">
+                    <form action="https://formspree.io/f/meokyvjo" method="POST">
+                        <!-- redirect pēc nosūtīšanas -->
+                        <input type="hidden" name="_next" value="thankyou.html">
+
+                        <div class="row">
+                            <div class="input-group">
+                                <label for="fname">Vārds</label>
+                                <input type="text" id="fname" name="Vārds" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="lname">Uzvārds</label>
+                                <input type="text" id="lname" name="Uzvārds" required>
+                            </div>
+                        </div>
+                    
+                        <div class="row">
+                            <div class="input-group">
+                                <label for="email">e-pasts</label>
+                                <input type="email" id="email" name="E-pasts" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="phone">Tel. numurs</label>
+                                <input type="tel" id="phone" name="Telefons">
+                            </div>
+                        </div>
+                    
+                        <div class="row full-width">
+                            <label for="message">Nosūtiet ziņu...</label>
+                            <textarea id="message" name="Ziņa" rows="4" required></textarea>
+                        </div>
+
+                        <div class="row full-width">
+                            <button type="submit">Nosūtīt</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer> 
+        <address class="aicinajums">
+            <a href="mailto:21milimetrs@gmail.com">21milimetrs@gmail.com</a>
+        </address>
+        <p class="normal">© 2022 mājaslapu izstrādāja SIA 21mm.</p>
+    </footer>
+</body>
+</html>
