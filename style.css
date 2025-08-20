@@ -277,90 +277,96 @@ nav ul ul li a {
 
 /*Container - video-pakalpojumi*/
 .video-container {
-    display: flex; /* Izmanto flexbox izkārtojumu */
+    display: flex;
     flex-direction: row;
-    width: 100%; /* Maksimālais konteineru platums */
-    min-height: calc(100vh - 250px); /* faktiski aizpilda redzamo ekrānu */
+    width: 100%;
+    min-height: calc(100vh - 250px);
     align-items: center;
-    flex-wrap: wrap; /* Atļauj elementiem pārklāties */
-    align-content:space-around;
-    justify-content: center; /* Centrē saturu horizontāli */
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
     gap: 20px;
 }
 
 .video-container .block {
     display: flex;
-    max-width: 500px; /* Maksimālais platums */
-    height: 500px; /* Maksimālais augstums */
-    background-color: rgb(0, 0, 0); /* Bloka fona krāsa */
-    color: whitesmoke; /* Teksta krāsa */
+    max-width: 500px;
+    height: 500px;
+    background-color: rgb(0, 0, 0);
+    color: whitesmoke;
     margin: 0;
     width: 100%;
     justify-content: center;
-    position: relative; /* Lai varētu pozicionēt .cover-frame */
-    overflow: hidden; /* Lai attēli nepārsniegtu konteineru */
+    position: relative;
+    overflow: hidden;
     gap: 20px;
 }
 
-.video-container .block:hover{
-    border-color: aqua; /* Maina border krāsu uz hover */
+.video-container .block:hover {
+    border-color: aqua;
     box-shadow: 0 0 16px 1px rgba(0, 255, 255, 0.3);
 }
 
 .cover-frame {
     position: relative;
-    width: 500px; /* Fiksēts platums */
-    height: 500px; /* Fiksēts augstums */
-    overflow: hidden; /* Saglabā attēlu border ietvaros */
-    border: 1px solid whitesmoke; /* Border līnija sākotnēji baltā krāsā */
-    transition: border-color 0.3s ease; /* Gluda pāreja uz border krāsas maiņu */
-    display: flex; /* Izmanto flexbox, lai centrētu saturu */
-    flex-direction: column; /* Novieto saturu vertikāli */
-    justify-content: center; /* Centrē saturu vertikāli */
-    align-items: center; /* Centrē saturu horizontāli */
-    text-align: center; /* Centrē tekstu */
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+    border: 1px solid whitesmoke;
+    transition: border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     cursor: pointer;
+    z-index: 10; /* klikšķi tiek uztverti šeit */
 }
 
-
 .cover-frame a {
-    display: flex; /* Izmanto flexbox, lai saturu centrētu */
-    flex-direction: column; /* Novieto saturu vertikāli */
-    justify-content: center; /* Centrē saturu vertikāli */
-    align-items: center; /* Centrē saturu horizontāli */
-    text-align: center; /* Centrē tekstu */
-    color: inherit; /* Iedod krāsu no vecākiem elementiem */
-    text-decoration: none; /* Noņem pasvītrojumu no saites */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: inherit;
+    text-decoration: none;
+    z-index: 10; /* nodrošina, ka klikšķi tiek uztverti tikai uz link */
 }
 
 .cover-frame h2 {
-    margin: 10px 0; /* Attālums starp nosaukumu un attēlu */
-    color: whitesmoke; /* Iestatiet krāsu, ja nepieciešams */
-    position: absolute; /* Pozicionē nosaukumu virs attēla */
-    top: 40%; /* Attālums no augšas */
-    left: 50%; /* Horizontālā centrēšana */
-    transform: translateX(-50%); /* Pārvietojiet uz kreiso pusi par pusi no platuma, lai centrētu */
-    z-index: 1; /* Pārliecinieties, ka nosaukums ir virs attēla */
-    transition: color 0.5s ease; /* Pievienots efekts krāsas maiņai */
-    transition: font-size 0.3s ease; /* Pievienots pārejas efekts uz font-size */
+    margin: 10px 0;
+    color: whitesmoke;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20; /* virs visiem pārējiem slāņiem */
+    transition: color 0.5s ease, font-size 0.3s ease, opacity 1s ease;
     opacity: 1;
-    transition: opacity 1s ease;
+    pointer-events: none; /* neķer klikšķus */
 }
 
 .cover-frame img {
-    width: auto; /* Aizpildīt visu pieejamo platumu */
-    height: 500px; /* Aizpildīt visu pieejamo augstumu */
-    object-fit: cover; /* Aizpildīt laukumu, saglabājot proporcijas */
+    width: auto;
+    height: 500px;
+    object-fit: cover;
     opacity: 50%;
-    filter: saturate(0); /* Sākotnēji melnbalts */
-    transition: filter 1s ease, transform 1s ease; /* Gluda pāreja uz hover efektu */
+    filter: saturate(0);
+    transition: filter 1s ease, transform 1s ease;
+    pointer-events: none; /* neķer klikšķus, klikšķi iet uz .cover-frame */
 }
 
-.cover-frame:hover{
+.cover-frame:hover {
     border-color: aqua;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
+/* Video elementi */
+video {
+    position: relative;
+    z-index: 5; /* zem cover-frame */
+}
 /* Teksta un saites krāsas maiņa uz hover */
 .cover-frame:hover h2,
 .cover-frame:hover h2 a {
@@ -387,8 +393,8 @@ nav ul ul li a {
     display: grid;
     width: 100%;
     min-height: 100%;
-    grid-template-columns: repeat(4, 1fr); /* Divas kolonnas */
-    gap: 20px; /* Atstarpe starp video klipiem */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
 .video-item {
@@ -402,6 +408,7 @@ nav ul ul li a {
     box-shadow: 0 0 0px rgba(255, 255, 255, 0.2);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
+    z-index: 1; /* pamata līmenis video-item */
 }
 
 .video-item:hover {
@@ -413,14 +420,15 @@ nav ul ul li a {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Tumša pārklājuma efekts */
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 3;
+    z-index: 10; /* virs video */
     border: 1px solid whitesmoke;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    pointer-events: auto; /* klikšķi tiek uztverti šeit */
 }
 
 .cover-photo:hover {
@@ -434,6 +442,7 @@ nav ul ul li a {
     object-fit: cover;
     filter: grayscale(100%);
     transition: filter 1s ease, transform 1s ease;
+    pointer-events: none; /* neķer klikšķus — klikšķi iet uz .cover-photo */
 }
 
 .cover-photo:hover img {
@@ -441,17 +450,12 @@ nav ul ul li a {
     transform: scale(1.05);
 }
 
-/* Hover efekts uz video un cover-photo */
-.video-item:hover .cover-photo img {
-    filter: grayscale(0); /* Krāsains attēls, kad hover virs video */
-    transform: scale(1.05); /* Attēls palielinās */
-}
-
 .cover-photo .play-button {
     position: absolute;
     color: white;
     font-size: 2rem;
     transition: color 0.3s ease;
+    pointer-events: none; /* klikšķi uz pogas nonāk uz cover-photo */
 }
 
 .cover-photo:hover .play-button {
@@ -469,7 +473,7 @@ video {
     width: 100%;
     display: block;
     position: absolute;
-    z-index: 2;
+    z-index: 5; /* zem cover-photo, bet virs video-item pamata */
 }
 
 /*kontakti*/
