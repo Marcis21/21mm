@@ -6,7 +6,7 @@
 }
 
 html, body {
-    height: 100%;
+    height: 100vh;
     margin: 0;
     padding: 0;
 }
@@ -151,6 +151,7 @@ nav ul ul li a {
     display: block;
 }
 
+col-8 
 
 .image-container {
     height: 1080px; /* tāds pats kā bijis attēlam */
@@ -160,7 +161,7 @@ nav ul ul li a {
     flex-direction: column; /* Novieto elementus vertikāli */
     justify-content: center; /* Centrē saturu vertikāli */
     align-items: center; /* Centrē horizontāli */
-    min-height: calc(100vh - 250px); /* faktiski aizpilda redzamo ekrānu */
+    min-height: 100vh; /* faktiski aizpilda redzamo ekrānu */
     width: 100%;
     overflow-x: hidden; /* Bloķē horizontālo ritināšanu */
 }
@@ -188,8 +189,8 @@ nav ul ul li a {
     flex-wrap: wrap; /* Atļauj bērniem pārkāpt uz nākamo rindu */
     justify-content: center; /* Nodrošina atstarpi starp kolonnām */
     align-items: center;
-    min-height: calc(100vh - 250px); /* faktiski aizpilda redzamo ekrānu */
     gap:20px;
+    min-height: calc(100vh - 250px);
 }
 
 .top-side, .bottom-side {
@@ -274,7 +275,6 @@ nav ul ul li a {
     display:none;
 }
 
-
 /*Container - video-pakalpojumi*/
 .video-container {
     display: flex;
@@ -291,8 +291,8 @@ nav ul ul li a {
 .video-container .block {
     display: flex;
     max-width: 500px;
-    height: 500px;
     background-color: rgb(0, 0, 0);
+    border: 1px solid whitesmoke;
     color: whitesmoke;
     margin: 0;
     width: 100%;
@@ -312,7 +312,6 @@ nav ul ul li a {
     width: 500px;
     height: 500px;
     overflow: hidden;
-    border: 1px solid whitesmoke;
     transition: border-color 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -426,7 +425,6 @@ video {
     align-items: center;
     cursor: pointer;
     z-index: 10; /* virs video */
-    border: 1px solid whitesmoke;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     pointer-events: auto; /* klikšķi tiek uztverti šeit */
 }
@@ -688,10 +686,6 @@ footer .normal {
 /* Responsive Styles */
 @media (max-width: 820px) {
 
-    * {
-        box-sizing: border-box; /* Nodrošina, ka padding un border ir daļa no platuma */
-    }
-
     main {
         grid-column: 1 / span 12; /* Full width on mobile */
         margin: 0 auto; /* Centrē visu saturu */
@@ -721,7 +715,7 @@ footer .normal {
 
     header nav {
         display: flex;
-        flex-direction: row; /* Stack menu vertically */
+        flex-direction: row; 
         align-items: center;
         flex-wrap: wrap;
         
@@ -735,7 +729,7 @@ footer .normal {
     }
 
     nav ul {
-        flex-direction: row; /* Stack menu items vertically */
+        flex-direction: row; 
         align-items: center;
         list-style: none; /* Remove bullet points */
         padding: 0;
@@ -788,10 +782,17 @@ footer .normal {
 
     header {
         margin: 0;
+        display: flex;
+        flex-direction: column; /* Ikonas + menu stājas vienā kolonnā, bet katrs savā rindā */
+        align-items: center;
     }   
 
-    main {
-    margin:0px;
+.social-media {
+        order: 1; /* Pirmā rinda */
+    }
+
+    nav {
+        order: 2; /* Otrā rinda */
     }
 
     h1 {
@@ -806,26 +807,37 @@ header nav {
     }
     
     nav ul {
-        flex-direction: column; /* Stack menu items vertically */
-        align-items: center;
-        list-style: none; /* Remove bullet points */
-        padding: 0;
+        display: flex;
+        flex-direction: row; /* Menu vienmēr rindā, arī uz telefona */
+        justify-content: center; /* Centrē menu vārdus */
+        gap: 15px; /* Atstarpes starp menu vārdiem */
     }
 
-nav ul ul {
-        display: none; /* Consider implementing a mobile menu instead */
+    nav ul li {
+        margin: 0; /* noņem lieko margin */
     }
 
     .video-container {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
 
-    .video-container .block {
-        flex: 1 1 auto;  
-    }
+  .video-container .block {
+    flex: 1 1 100%;
+    aspect-ratio: 1 / 1; /* ŠEIT piespiežam kvadrātu */
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    
+  }
 
+  .video-container .block img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center center; /* bilde centrēta */
+  }
     
     .zimols {
         width: 30vw; /* Make the logo smaller on mobile screens */
