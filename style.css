@@ -772,9 +772,7 @@ footer .normal {
     .contact-container {
         align-content:baseline;
         justify-content: center;  
-    }
-      
-        
+    }    
 }
     
 
@@ -799,11 +797,10 @@ footer .normal {
         margin: 0px;
     }
 
-header nav {
+    header nav {
         flex-direction: column; /* Stack header elements vertically */
         align-items: center; /* Align elements to the left */
-        flex-wrap: wrap;
-        
+        flex-wrap: wrap;   
     }
     
     nav ul {
