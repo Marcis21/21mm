@@ -748,17 +748,6 @@ footer .normal {
         margin: 10px 0;
     }
 
-    .social-media {
-    display: flex; /* Use flexbox for alignment */
-    justify-content: center; /* Center social icons */
-    margin-bottom: 10px; /* Add spacing between social icons and menu bar */
-    }
-
-    .social-media a {
-    margin: 0 0px; /* Space out the icons horizontally */
-    }
-
-
     .video-reklama{
         display: flex;
         align-items: center;
@@ -784,10 +773,6 @@ footer .normal {
         flex-direction: column; /* Ikonas + menu stājas vienā kolonnā, bet katrs savā rindā */
         align-items: center;
     }   
-
-.social-media {
-        order: 1; /* Pirmā rinda */
-    }
 
     nav {
         order: 2; /* Otrā rinda */
