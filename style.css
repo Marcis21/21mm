@@ -175,7 +175,7 @@ col-8
 .zimols {
     display: grid;
     position: absolute; /* Absolūta pozicionēšana attiecībā pret .image-container */
-    top: 50%; /* Centrē vertikāli */
+    top: 40%; /* Centrē vertikāli */
     left: 50%; /* Centrē horizontāli */
     transform: translate(-50%, -50%); /* Nodrošina, ka tas ir pilnīgi centrēts */
     width: 300px; /* Logotipa izmērs */
@@ -190,7 +190,7 @@ col-8
     justify-content: center; /* Nodrošina atstarpi starp kolonnām */
     align-items: center;
     gap:20px;
-    min-height: calc(100vh - 250px);
+    min-height: calc(100vh - 400px)
 }
 
 .top-side, .bottom-side {
@@ -280,7 +280,7 @@ col-8
     display: flex;
     flex-direction: row;
     width: 100%;
-    min-height: calc(100vh - 250px);
+    min-height: calc(100vh - 400px);
     align-items: center;
     flex-wrap: wrap;
     align-content: space-around;
@@ -482,7 +482,7 @@ video {
     flex-direction: row;
     flex-wrap: wrap; /* Atļauj elementiem pārklāties */
     width: 100%; /* Maksimālais konteineru platums */
-    min-height: calc(100vh - 250px); /* faktiski aizpilda redzamo ekrānu */
+    min-height: calc(100vh - 400px); /* faktiski aizpilda redzamo ekrānu */
     align-items: center;
     box-sizing: border-box;
     align-content:space-evenly;
@@ -679,7 +679,6 @@ footer .normal {
  .video-reklama {
     grid-template-columns: repeat(2, 1fr); /* Divas kolonnas */
  }
-
 }
 
 
