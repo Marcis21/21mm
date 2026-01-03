@@ -178,7 +178,7 @@ col-8
     top: 40%; /* Centrē vertikāli */
     left: 50%; /* Centrē horizontāli */
     transform: translate(-50%, -50%); /* Nodrošina, ka tas ir pilnīgi centrēts */
-    width: 150px; /* Logotipa izmērs */
+    width: 250px; /* Logotipa izmērs */
     z-index: 4; /* Pārliecinies, ka logotips ir virs fona attēla */
 }
 
@@ -203,6 +203,9 @@ col-8
     text-align: center;
     max-width: 600px;
     line-height: 1.5;
+    text-transform: uppercase; /* padara visus burtus lielos */
+    color: aqua;               /* teksta krāsa */
+    text-shadow: 0 0 16px rgba(0, 255, 255, 0.4); /* viegls glow efekts */
 }
 
 
@@ -270,11 +273,13 @@ col-8
 
 /* Attēlu konteineris ar pārrobežu efektu */
 .image2-container {
+    width: 500px;       /* vai 100% responsīvajam režīmam */
+    height: 500px;      /* kvadrāta augstums */
     position: relative;
     border: 1px solid whitesmoke;
     overflow: hidden;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    filter: saturate(0); /* Melnbalts sākumā */
+    filter: saturate(0);
 }
 
 .image2-container:hover {
@@ -289,10 +294,6 @@ col-8
     height: 100%;
     object-fit: cover;
     transition: transform 1s ease;
-}
-
-.image2:hover {
-    transform: scale(1.05); /* Attēls palielinās par 5% */
 }
 
 .dala2 h1 {
@@ -685,6 +686,10 @@ footer .normal {
 
 @media (max-width: 1280px) {
 
+    .video-reklama {
+    grid-template-columns: repeat(2, 1fr); /* Divas kolonnas */
+    }
+    
     .teksts1, .teksts2, .image2-container, .logo-kapseta {
         flex: 1 1 100%; /* Aizņem visu pieejamo vietu (100%) */
         max-width: 100%; /* Maksimālais platums 100% */
@@ -700,10 +705,35 @@ footer .normal {
         align-items: center; /* Centrē blokus vertikāli */
     }
 
- .video-reklama {
-    grid-template-columns: repeat(2, 1fr); /* Divas kolonnas */
- }
  
+
+ .image2-container {
+    width: 100%;        /* aizņem visu pieejamo platumu */
+    position: relative;
+    padding-top: 100%;  /* kvadrāts: augstums = platums */
+    border: 1px solid whitesmoke;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    filter: saturate(0);
+}
+
+.image2-container:hover {
+    border-color: aqua;
+    box-shadow: 0 0 16px 1px rgba(0, 255, 255, 0.3);
+    filter: saturate(1);
+}
+
+/* Video aizpilda kvadrātu, saglabājot proporcijas */
+.image2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease;
+}
+
 }
 
 
