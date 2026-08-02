@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Mārcis Liepiņš">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakti - Studija 21mm</title>
+    <link rel="icon" href="Logo_21mm.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <div class="social-media">
+            <a href="index.html">
+                <i class="fas fa-home"></i>
+            </a>
+        </div>
+
+    <nav>
+        <ul class="navigacija">
+            <li>
+                <a href="about.html">studija</a>
+            </li>
+
+            <li>
+                <a href="services.html">pakalpojumi</a>
+                <ul>
+                    <li>
+                        <a href="editing.html">video editing</a>
+                    </li>
+                    <li>
+                        <a href="color.html">color grading</a>
+                    </li>
+                    <li>
+                        <a href="motion.html">motion design</a>
+                    </li>
+                    <li>
+                        <a href="showreel.html">showreel</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a class="active" href="contact.html">kontakti</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+</header>
+
+<main>
+    <h1 class="dala1">kontakti</h1>
+
+<div class="contact-container">
+
+    <div class="left-section">
+
+        <div class="bilde">
+            <img src="Bildes/Logo/bilde_ML.jpg" alt="Studijas 21mm vadītājs Mārcis Liepiņš">
+        </div>
+
+        <div class="teksts3">
+            <p>Mārcis Liepiņš</p>
+            <p>Adrese: Zeltrītu iela 26, Mārupe</p>
+            <p>
+                E-pasts:
+                <a href="mailto:21milimetrs@gmail.com">21milimetrs@gmail.com</a>
+            </p>
+            <p>Mob: +371 29 358 338</p>
+        </div>
+
+    </div>
+
+
+    <div class="right-section">
+
+        <form action="https://formspree.io/f/meokyvjo" method="POST">
+
+            <input type="hidden" name="_next" value="thankyou.html">
+
+            <div class="form-fields">
+
+                <div class="row">
+
+                    <div class="input-group">
+                        <label for="fname">Vārds</label>
+                        <input type="text" id="fname" name="Vārds" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="lname">Uzvārds</label>
+                        <input type="text" id="lname" name="Uzvārds" required>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+
+                    <div class="input-group">
+                        <label for="email">e-pasts</label>
+                        <input type="email" id="email" name="E-pasts" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="phone">Tel. numurs</label>
+                        <input type="tel" id="phone" name="Telefons">
+                    </div>
+
+                </div>
+
+
+                <div class="row full-width">
+
+                    <label for="message">Ziņojums</label>
+
+                    <textarea id="message" name="Ziņa" rows="4" required></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="row full-width">
+
+                <button type="submit">Nosūtīt</button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+</main>
+<footer>
+    <div class="footer-inner">
+    <div class="footer-left">
+        <p class="normal">© 2025 SIA 21ML</p>
+
+        <span class="footer-divider"></span>
+
+        <address class="aicinajums">
+            <a href="mailto:21milimetrs@gmail.com">
+                21milimetrs@gmail.com
+            </a>
+        </address>
+    </div>
+
+    <div class="footer-right">
+        <a href="https://www.facebook.com/Studija21mm/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://vimeo.com/studija21mm" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-vimeo-v"></i>
+        </a>
+
+        <a href="https://www.youtube.com/@Studija21mm" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-youtube"></i>
+        </a>
+    </div>
+
+</div>
+</footer>
+</body>
+</html>
