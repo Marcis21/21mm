@@ -254,7 +254,7 @@ nav ul ul li a {
 
     width: 100%;
 
-    min-height: calc(100vh - 160px);
+    height:100%;
 
     overflow: hidden;
 }
@@ -280,9 +280,9 @@ nav ul ul li a {
 }
 
 .logo-wrapper {
-
     position: absolute;
     inset: 0;
+    overflow: hidden;
 }
 
 .logo-slogan {
@@ -1552,6 +1552,8 @@ footer {
 @media (max-width: 480px) {
 
     .logo-slogan {
+
+        display: none;
 
         flex-direction: column;
 
