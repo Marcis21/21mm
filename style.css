@@ -1236,6 +1236,12 @@ footer {
         width: 100%;
         gap: 10px;
     }
+
+    .center-active {
+        border-color: aqua;
+        box-shadow: var(--frame-shadow);
+    }
+    
 }
 
 

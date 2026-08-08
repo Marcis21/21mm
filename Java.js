@@ -1,13 +1,10 @@
-//scripts.js
+// scripts.js
 
 document.addEventListener("DOMContentLoaded", () => {
 
     // =========================================
     // VIDEO ITEMS
     // =========================================
-
-    // Globālais mainīgais hover pauzes kontrolei
-    let pauseTriggeredByHover = false;
 
     const videoItems = document.querySelectorAll('.video-item');
 
@@ -45,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (video.paused) {
 
                 img.style.filter = 'grayscale(0)';
-
                 img.style.transform = 'scale(1.05)';
 
             }
@@ -57,14 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
             if (video.paused) {
 
                 img.style.filter = 'grayscale(100%)';
-
                 img.style.transform = 'scale(1)';
 
             }
 
         });
 
-        // Atjauno cover-photo stāvokli pēc video play/pause/end
+        // Video sākas
         video.addEventListener('play', () => {
 
             coverPhoto.classList.add('hidden');
@@ -75,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
+        // Video apstājas
         video.addEventListener('pause', () => {
 
             coverPhoto.classList.remove('hidden');
@@ -87,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
+        // Video beidzas
         video.addEventListener('ended', () => {
 
             coverPhoto.classList.remove('hidden');
@@ -142,5 +139,53 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     });
+
+
+    // =========================================
+    // MOBILE CENTER EFFECT
+    // =========================================
+
+    if (window.matchMedia('(max-width: 820px)').matches) {
+
+        const centerBlocks = document.querySelectorAll(
+            '.video-container .block, .video-item, .about-grid article'
+        );
+
+        if (centerBlocks.length) {
+
+            const centerObserver = new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add('center-active');
+
+                        } else {
+
+                            entry.target.classList.remove('center-active');
+
+                        }
+
+                    });
+
+                },
+                {
+                    root: null,
+                    rootMargin: '-20% 0px -30% 0px',
+                    threshold: 0
+                }
+            );
+
+            centerBlocks.forEach(block => {
+
+                centerObserver.observe(block);
+
+            });
+
+        }
+
+    }
 
 });
