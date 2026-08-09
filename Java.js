@@ -1,45 +1,120 @@
 // scripts.js
 
+
+// =========================================
+// UNIVERSAL VIDEO PLAY FUNCTION
+// Used by Showreel:
+// onclick="playVideo(1)"
+// =========================================
+
+function playVideo(number) {
+
+    const video = document.getElementById(`video${number}`);
+
+    if (!video) {
+        console.error(`Video video${number} nav atrasts.`);
+        return;
+    }
+
+
+    // Ja šis video jau spēlē, apturam
+    if (!video.paused) {
+
+        video.pause();
+
+        return;
+    }
+
+
+    // Apturam visus pārējos video
+    document.querySelectorAll('video').forEach(otherVideo => {
+
+        if (otherVideo !== video && !otherVideo.paused) {
+
+            otherVideo.pause();
+
+        }
+
+    });
+
+
+    // Palaižam izvēlēto video
+    video.play().catch(error => {
+
+        console.error(
+            `Neizdevās palaist ${video.id}:`,
+            error
+        );
+
+    });
+
+}
+
+
+
+// =========================================
+// PAGE LOADED
+// =========================================
+
 document.addEventListener("DOMContentLoaded", () => {
 
+
     // =========================================
-    // VIDEO ITEMS
+    // ALL VIDEOS ON CURRENT PAGE
+    // =========================================
+
+    const allVideos = document.querySelectorAll('video');
+
+
+    console.log(`Atrasti ${allVideos.length} video.`);
+
+
+
+    // =========================================
+    // SHOWREEL VIDEO ITEMS
     // =========================================
 
     const videoItems = document.querySelectorAll('.video-item');
 
-    videoItems.forEach((item, index) => {
+
+    videoItems.forEach(item => {
 
         const video = item.querySelector('video');
         const coverPhoto = item.querySelector('.cover-photo');
+
+
+        // Ja nav video vai cover,
+        // šo elementu neapstrādājam
+        if (!video || !coverPhoto) {
+            return;
+        }
+
+
         const playButton = coverPhoto.querySelector('.play-button');
         const img = coverPhoto.querySelector('img');
 
-        // Klikšķis uz cover-photo - atskaņo video
-        coverPhoto.addEventListener('click', () => {
 
-            if (video.paused) {
 
-                video.play();
+        // =========================================
+        // IMPORTANT:
+        // NO CLICK LISTENER HERE
+        //
+        // Showreel HTML already has:
+        // onclick="playVideo(number)"
+        //
+        // Therefore we must NOT add another
+        // click event here.
+        // =========================================
 
-                coverPhoto.classList.add('hidden');
 
-                playButton.style.display = 'none';
 
-            } else {
+        // =========================================
+        // HOVER EFFECTS
+        // =========================================
 
-                video.pause();
-
-                playButton.style.display = 'block';
-
-            }
-
-        });
-
-        // Hover efekti tikai vizuāli
         item.addEventListener('mouseenter', () => {
 
-            if (video.paused) {
+            if (video.paused && img) {
 
                 img.style.filter = 'grayscale(0)';
                 img.style.transform = 'scale(1.05)';
@@ -48,9 +123,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
+
         item.addEventListener('mouseleave', () => {
 
-            if (video.paused) {
+            if (video.paused && img) {
 
                 img.style.filter = 'grayscale(100%)';
                 img.style.transform = 'scale(1)';
@@ -59,78 +135,106 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-        // Video sākas
+
+
+        // =========================================
+        // VIDEO STARTS PLAYING
+        // =========================================
+
         video.addEventListener('play', () => {
 
             coverPhoto.classList.add('hidden');
 
-            playButton.style.display = 'none';
 
-            img.style.filter = 'grayscale(0)';
+            if (playButton) {
+
+                playButton.style.display = 'none';
+
+            }
+
+
+            if (img) {
+
+                img.style.filter = 'grayscale(0)';
+
+            }
 
         });
 
-        // Video apstājas
+
+
+        // =========================================
+        // VIDEO PAUSES
+        // =========================================
+
         video.addEventListener('pause', () => {
 
             coverPhoto.classList.remove('hidden');
 
-            playButton.style.display = 'block';
 
-            img.style.filter = 'grayscale(100%)';
+            if (playButton) {
 
-            img.style.transform = 'scale(1)';
+                playButton.style.display = 'block';
+
+            }
+
+
+            if (img) {
+
+                img.style.filter = 'grayscale(100%)';
+                img.style.transform = 'scale(1)';
+
+            }
 
         });
 
-        // Video beidzas
+
+
+        // =========================================
+        // VIDEO ENDS
+        // =========================================
+
         video.addEventListener('ended', () => {
 
             coverPhoto.classList.remove('hidden');
 
-            playButton.style.display = 'block';
 
-            img.style.filter = 'grayscale(100%)';
+            if (playButton) {
 
-            img.style.transform = 'scale(1)';
+                playButton.style.display = 'block';
+
+            }
+
+
+            if (img) {
+
+                img.style.filter = 'grayscale(100%)';
+                img.style.transform = 'scale(1)';
+
+            }
 
         });
 
     });
 
 
+
     // =========================================
     // ONLY ONE VIDEO PLAYS AT A TIME
     // =========================================
 
-    videoItems.forEach((item, index) => {
-
-        const video = item.querySelector('video');
+    allVideos.forEach(video => {
 
         video.addEventListener('play', () => {
 
-            videoItems.forEach((otherItem, otherIndex) => {
+            allVideos.forEach(otherVideo => {
 
-                if (otherIndex !== index) {
+                if (
+                    otherVideo !== video &&
+                    !otherVideo.paused
+                ) {
 
-                    const otherVideo = otherItem.querySelector('video');
-                    const otherCover = otherItem.querySelector('.cover-photo');
-                    const otherPlay = otherCover.querySelector('.play-button');
-                    const otherImg = otherCover.querySelector('img');
-
-                    if (!otherVideo.paused) {
-
-                        otherVideo.pause();
-
-                        otherCover.classList.remove('hidden');
-
-                        otherPlay.style.display = 'block';
-
-                        otherImg.style.filter = 'grayscale(100%)';
-
-                        otherImg.style.transform = 'scale(1)';
-
-                    }
+                    otherVideo.pause();
 
                 }
 
@@ -139,6 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     });
+
 
 
     // =========================================
@@ -150,6 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const centerBlocks = document.querySelectorAll(
             '.video-container .block, .video-item, .about-grid article'
         );
+
 
         if (centerBlocks.length) {
 
@@ -177,6 +283,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     threshold: 0
                 }
             );
+
 
             centerBlocks.forEach(block => {
 
