@@ -1303,6 +1303,14 @@ footer {
         height: 320px;
     }
 
+    .video-container .block,
+    .video-item,
+    .about-grid article,
+    .process-text,
+    .left-section .bilde {
+    border-color: var(--frame-hover-border);
+    box-shadow: var(--frame-shadow);
+}
 
     /* FOOTER */
 
